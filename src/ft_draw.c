@@ -6,28 +6,13 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 08:49:01 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/07/22 20:36:39 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/09/19 15:50:12 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	*iso(int x, int y, int z)
-{
-	int		previous_x;
-	int		previous_y;
-	t_point	*point;
-
-	point = malloc(sizeof(t_point));
-	previous_x = x;
-	previous_y = y;
-	point->x = (previous_x - previous_y) * cos(0.523599);
-	point->y = -z + (previous_x + previous_y) * sin(0.523599);
-
-	return (point);
-}
-
-void	ft_draw_plane(t_params *params)
+void	ft_draw_xy(t_params *params)
 {
 	int y;
 	int x;
@@ -39,94 +24,57 @@ void	ft_draw_plane(t_params *params)
 		while (x < params->x_max)
 		{
 			if (x < params->x_max - 1)
-				ft_prex(params, x, y);
+				ft_draw_x(params, x, y);
 			if (y < params->lines - 1)
-				ft_prey(params, x, y);
+				ft_draw_y(params, x, y);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	ft_prex(t_params *params, int x, int y)
+void	ft_draw_line(t_params *params, t_point *point0,
+		t_point *point1, int color)
 {
-	int		z0;
-	int		z1;
-	t_point	*point0;
-	t_point	*point1;
-
-	z0 = params->plot[y][x] * params->z_zoom;
-	z1 = params->plot[y][x + 1] * params->z_zoom;
-	y *= params->zoom;
-	point0 = iso(x * params->zoom, y, z0);
-	point1 = iso((x + 1) * params->zoom, y, z1);
-	if (!(point0->x + params->x_translate > params->width
-		&& point1->x + params->x_translate > params->width))
-		if (!(point0->y + params->y_translate > params->height
-			&& point1->y + params->y_translate > params->height))
-			line(params, point0->x + params->x_translate,
-			point0->y + params->y_translate, point1->x + params->x_translate,
-			point1->y + params->y_translate,
-			(z0 && z1) ? RED : GREY);
-	free(point0);
-	free(point1);
+	point0->x += params->x_translate;
+	point0->y += params->y_translate;
+	point1->x += params->x_translate;
+	point1->y += params->y_translate;
+	line(point0, point1, color);
 }
 
-
-
-void	ft_prey(t_params *params, int x, int y)
+void	ft_init_pts(t_point *d, t_point *s, t_point *p0, t_point *p1)
 {
-	int		z0;
-	int		z1;
-	t_point	*point0;
-	t_point	*point1;
-
-	z0 = params->plot[y][x] * params->z_zoom;
-	z1 = params->plot[y + 1][x] * params->z_zoom;
-	x *= params->zoom;
-	point0 = iso(x, y * params->zoom, z0);
-	point1 = iso(x, (y + 1) * params->zoom, z1);
-	if (!(point0->x + params->x_translate > params->width
-		&& point1->x + params->x_translate > params->width))
-		if (!(point0->y + params->y_translate > params->height
-			&& point1->y + params->y_translate > params->height))
-			line(params, point0->x + params->x_translate,
-			point0->y + params->y_translate, point1->x + params->x_translate,
-			point1->y + params->y_translate,
-			(z0 && z1) ? RED : GREY);
-	free(point0);
-	free(point1);
+	d->x = abs(p1->x - p0->x);
+	s->x = p0->x < p1->x ? 1 : -1;
+	d->y = abs(p1->y - p0->y);
+	s->y = p0->y < p1->y ? 1 : -1;
 }
 
-void	line(t_params *params, int x0, int y0, int x1, int y1, int color)
+void	line(t_point *p0, t_point *p1, int color)
 {
-	int dx;
-	int dy;
-	int sx;
-	int e2;
-	int sy;
-	int err;
+	t_point	d;
+	t_point	s;
+	int		e2;
+	int		err;
 
-	dx = abs(x1 - x0);
-	sx = x0 < x1 ? 1 : -1;
-	dy = abs(y1 - y0);
-	sy = y0 < y1 ? 1 : -1;
-	err = (dx > dy ? dx : -dy) / 2;
+	ft_init_pts(&d, &s, p0, p1);
+	err = (d.x > d.y ? d.x : -d.y) / 2;
 	while (1)
 	{
-		mlx_pixel_put(params->mlx_ptr, params->win_ptr, x0, y0, color);
-		if (x0 == x1 && y0 == y1)
+		ft_putpixel(p0->x, p0->y, color);
+		if (p0->x == p1->x && p0->y == p1->y)
 			break ;
 		e2 = err;
-		if (e2 > -dx)
+		if (e2 > -d.x)
 		{
-			err -= dy;
-			x0 += sx;
+			err -= d.y;
+			p0->x += s.x;
 		}
-		if (e2 < dy)
+		if (e2 < d.y)
 		{
-			err += dx;
-			y0 += sy;
+			err += d.x;
+			p0->y += s.y;
 		}
 	}
 }
@@ -134,5 +82,6 @@ void	line(t_params *params, int x0, int y0, int x1, int y1, int color)
 void	ft_draw(t_params *params)
 {
 	mlx_clear_window(params->mlx_ptr, params->win_ptr);
-	ft_draw_plane(params);
+	ft_draw_xy(params);
+	ft_resetscr(params);
 }
