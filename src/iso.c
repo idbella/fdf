@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:25:52 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 00:59:44 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 04:19:15 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	iso(t_point *point, int x, int y, int z)
 	}
 	else
 	{
-		point->x = (x - y) * cos(params->angle);
+		point->x = (x - y) * cos(ANGLE);
 		point->y = (x + y) * sin(ANGLE) - z;
 	}
 }

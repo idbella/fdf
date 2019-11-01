@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 03:45:47 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 04:38:05 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,7 @@ void		ft_list_to_array(t_params *params)
 	params->plot[y] = NULL;
 }
 
-int			ft_close(void)
-{
-	ft_fatal(NULL, 1);
-	return (0);
-}
-
-void		ft_init(t_params *params)
+void		ft_init(t_params *params, char *file)
 {
 	params->points = NULL;
 	ft_setter(params);
@@ -73,17 +67,19 @@ void		ft_init(t_params *params)
 	params->pthead = NULL;
 	params->plot = NULL;
 	params->lines = 0;
+	if (!(params->mlx_ptr = mlx_init()))
+		ft_fatal("unable to initialize mlx\n");
+	if (!(params->win_ptr = mlx_new_window(params->mlx_ptr, params->width,
+		params->height, file)))
+		ft_fatal("unable to creat new window\n");
 }
 
-char ft_loader(t_params *params, char *file, char first)
+void		ft_loader(t_params *params, char *file)
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	ft_init(params);
+	ft_init(params, file);
 	if ((params->fd = open(file, O_RDONLY)) < 0)
-		return (ft_fatal("unable to open map", 0));
-	if (!ft_load_map(params))
-		return (0);
+		ft_fatal("unable to open map");
+	ft_load_map(params);
 	if (params->x_max * 10 > params->width)
 	{
 		params->x_translate += 100;
@@ -95,33 +91,17 @@ char ft_loader(t_params *params, char *file, char first)
 		params->zoom = 2.5;
 	}
 	ft_list_to_array(params);
-	if (first)
-	{
-		if (!(mlx_ptr = mlx_init()))
-			ft_fatal("unable to initialize mlx\n", 1);
-		if (!(win_ptr = mlx_new_window(mlx_ptr, params->width, params->height, file)))
-			ft_fatal("unable to creat new window\n", 1);
-		ft_handle_input(win_ptr);
-		params->mlx_ptr = mlx_ptr;
-		params->win_ptr = win_ptr;
-	}
-	params->var = 0;
-	params->angle = ANGLE;
+	ft_handle_input(params->win_ptr);
 	ft_draw(params);
 	mlx_loop(params->mlx_ptr);
-	return (1);
 }
 
 int			main(int argc, char **argv)
 {
-
 	t_params	params;
-	char		*img;
 
 	if (argc > 1)
-	{
-		ft_loader(&params, argv[1], 1);
-	}
+		ft_loader(&params, argv[1]);
 	else
 		ft_printf_fd(2, "usage : ./fdf file.map");
 	return (0);

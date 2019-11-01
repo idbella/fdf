@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:48:53 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 03:49:41 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 04:17:45 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_getxyz(char **array, t_params *params, int y)
 	ft_free_array(array);
 }
 
-char	ft_load_map(t_params *params)
+void	ft_load_map(t_params *params)
 {
 	char	*line;
 	char	**parts;
@@ -87,12 +87,11 @@ char	ft_load_map(t_params *params)
 		if (y == 0)
 			params->x_max = lenght;
 		else if (lenght < params->x_max)
-			return (ft_fatal("Map Error1", 0));
+			ft_fatal("Map Error1");
 		ft_getxyz(parts, params, y);
 		y++;
 	}
 	if (y == 0 && lenght == 0)
-		return (ft_fatal("No data found", 0));
+		ft_fatal("No data found");
 	params->lines = y;
-	return (1);
 }

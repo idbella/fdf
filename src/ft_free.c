@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:07:29 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 03:48:35 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 04:53:43 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_free_array(char **array)
 	free(array);
 }
 
-char	ft_fatal(char *msg, char _exit)
+int		ft_fatal(char *msg)
 {
 	t_params	*params;
 	t_point		*pt;
@@ -46,10 +46,7 @@ char	ft_fatal(char *msg, char _exit)
 		free(plot[y++]);
 	params->pthead = NULL;
 	params->plot = NULL;
-	if (_exit)
-	{
-		free(plot);
-		exit(1);
-	}
+	free(plot);
+	exit(1);
 	return (0);
 }

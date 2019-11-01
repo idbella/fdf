@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 03:41:48 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 04:58:30 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 # include "../libft/libft.h"
 # include "mlx.h"
 # include "fcntl.h"
-# define GREY   7500402
-# define RED   5316608
-# define GREEN 5251072// // 6794612
+# define GREY 7500402
+# define RED 5316608
+# define GREEN 5251072
 # include <math.h>
 # define PARALLEL -1
 # define ISO 1
 # define ANGLE 0.523599
 # include <stdio.h>
-#include <glob.h>
+# include <glob.h>
 
 typedef struct	s_point
 {
@@ -58,20 +58,17 @@ typedef	struct	s_params
 	t_point	*tmppt1;
 	int		width;
 	int		height;
-	float	angle;
-	glob_t	glb;
-	int		menudex;
 	int		**screen;
 }				t_params;
 
-typedef struct s_size
+typedef struct	s_size
 {
 	size_t	width;
 	size_t	height;
 }				t_size;
 
-char			ft_load_map(t_params *params);
-char			ft_fatal(char *msg, char _exit);
+void			ft_load_map(t_params *params);
+int				ft_fatal(char *msg);
 void			ft_draw_plane(t_params *params);
 void			ft_draw(t_params *params);
 void			ft_draw_x(t_params *params, int x, int y);
@@ -89,6 +86,7 @@ void			iso(t_point *point, int x, int y, int z);
 int				ft_getcolor(int z0, int z1, int zmax);
 void			ft_draw_line(t_params *params, t_point *point0,
 					t_point *point1, int color);
-void			ft_putpixel(t_params *params, int x0, int y0, int color);
-char			ft_loader(t_params *params, char *file, char first);
+void			ft_putpixel(int x0, int y0, int color);
+void			ft_loader(t_params *params, char *file);
+void			ft_init_draw(t_point *start, t_point *end, int color);
 #endif
