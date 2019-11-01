@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/09/19 15:50:47 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 03:41:48 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 # include "fcntl.h"
 # define GREY   7500402
 # define RED   5316608
-# define GREEN 5251072//9437184 // 6794612
+# define GREEN 5251072// // 6794612
 # include <math.h>
 # define PARALLEL -1
 # define ISO 1
 # define ANGLE 0.523599
 # include <stdio.h>
+#include <glob.h>
+
 typedef struct	s_point
 {
-	int				x;
-	int				y;
+	float			x;
+	float			y;
 	int				z;
 	struct s_point	*next;
 }				t_point;
@@ -36,12 +38,12 @@ typedef	struct	s_params
 	int		x_max;
 	t_point	*points;
 	t_point	*pthead;
-	t_point	*ptlast;
 	int		fd;
 	int		**plot;
 	int		lines;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*image;
 	float	zoom;
 	float	z_zoom;
 	int		x_translate;
@@ -50,16 +52,26 @@ typedef	struct	s_params
 	char	mouse_down;
 	int		x;
 	int		y;
+	char	var;
 	int		maxz;
 	t_point	*tmppt0;
 	t_point	*tmppt1;
 	int		width;
 	int		height;
+	float	angle;
+	glob_t	glb;
+	int		menudex;
 	int		**screen;
 }				t_params;
 
-void			ft_load_map(t_params *params);
-void			ft_fatal(char *msg);
+typedef struct s_size
+{
+	size_t	width;
+	size_t	height;
+}				t_size;
+
+char			ft_load_map(t_params *params);
+char			ft_fatal(char *msg, char _exit);
 void			ft_draw_plane(t_params *params);
 void			ft_draw(t_params *params);
 void			ft_draw_x(t_params *params, int x, int y);
@@ -77,7 +89,6 @@ void			iso(t_point *point, int x, int y, int z);
 int				ft_getcolor(int z0, int z1, int zmax);
 void			ft_draw_line(t_params *params, t_point *point0,
 					t_point *point1, int color);
-void			ft_resetscr(t_params *params);
-void			alloc_src(t_params *params);
-void			ft_putpixel(int x0, int y0, int color);
+void			ft_putpixel(t_params *params, int x0, int y0, int color);
+char			ft_loader(t_params *params, char *file, char first);
 #endif

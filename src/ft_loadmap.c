@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:48:53 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/09/19 15:07:27 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 03:49:41 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	ft_getxyz(char **array, t_params *params, int y)
 	while (array[x] && x < params->x_max)
 	{
 		point = ft_new_point(x, y, array);
-		if (abs(point->z) > params->maxz)
-			params->maxz = abs(point->z);
+		if (fabs((float)point->z) > params->maxz)
+			params->maxz = fabs((float)point->z);
 		if (params->points)
 		{
 			params->points->next = point;
@@ -71,7 +71,7 @@ void	ft_getxyz(char **array, t_params *params, int y)
 	ft_free_array(array);
 }
 
-void	ft_load_map(t_params *params)
+char	ft_load_map(t_params *params)
 {
 	char	*line;
 	char	**parts;
@@ -87,11 +87,12 @@ void	ft_load_map(t_params *params)
 		if (y == 0)
 			params->x_max = lenght;
 		else if (lenght < params->x_max)
-			ft_fatal("Map Error1");
+			return (ft_fatal("Map Error1", 0));
 		ft_getxyz(parts, params, y);
 		y++;
 	}
 	if (y == 0 && lenght == 0)
-		ft_fatal("No data found");
+		return (ft_fatal("No data found", 0));
 	params->lines = y;
+	return (1);
 }
