@@ -6,13 +6,13 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/19 06:27:37 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/07/11 21:56:11 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/09/26 21:22:35 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static ssize_t	ft_endl(char *str)
+ssize_t	ft_endl(char *str)
 {
 	ssize_t pos;
 
@@ -27,7 +27,26 @@ static ssize_t	ft_endl(char *str)
 	return (-1);
 }
 
-static int		ft_adjust(char **line, char **array, int pos)
+int		ft_norm(char **line, char **array)
+{
+	char	*tmp;
+
+	tmp = *line;
+	*line = *array;
+	if (tmp)
+		free(tmp);
+	if (!**array)
+	{
+		*line = NULL;
+		return (0);
+	}
+	if (*array)
+		free(*array);
+	*array = NULL;
+	return (0);
+}
+
+int		ft_adjust(char **line, char **array, int pos)
 {
 	char *tmp;
 
@@ -42,40 +61,22 @@ static int		ft_adjust(char **line, char **array, int pos)
 		free(tmp);
 	}
 	else
-	{
-		tmp = *line;
-		*line = *array;
-		if (tmp)
-			free(tmp);
-		if (!**array)
-		{
-			*line = NULL;
-			return (0);
-		}
-		if (*array)
-			free(*array);
-		*array = NULL;
-		return (0);
-	}
+		return (ft_norm(line, array));
 	return (1);
 }
 
-int				get_next_line(const int fd, char **line)
+int		get_next_line(const int fd, char **line)
 {
 	static char *array;
 	ssize_t		lenght;
 	ssize_t		pos;
-	char		buff_test[1];
 	char		*tmp;
 
-	if (fd < 0 || !line || fd > 4863 || read(fd, buff_test, 0) < 0)
-		return (-1);
 	if (!array)
 		array = ft_strnew(1);
 	if ((pos = ft_endl(array)) == -1)
 	{
-		if (!(*line = ft_strnew(BUFF_SIZE)))
-			return (-1);
+		*line = ft_strnew(BUFF_SIZE);
 		while ((lenght = read(fd, *line, BUFF_SIZE)) > 0)
 		{
 			(*line)[lenght] = '\0';

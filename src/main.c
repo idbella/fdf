@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 04:38:05 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 06:37:17 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ int			main(int argc, char **argv)
 	if (argc > 1)
 		ft_loader(&params, argv[1]);
 	else
-		ft_printf_fd(2, "usage : ./fdf file.map");
+		ft_printf_fd(2, "usage : ./fdf file.map\n");
 	return (0);
 }

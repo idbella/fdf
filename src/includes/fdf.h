@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 04:58:30 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/01 05:24:37 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@
 # define ANGLE 0.523599
 # include <stdio.h>
 # include <glob.h>
-
+# define START 0
+# define END 1
+# define A 0
+# define B 1
 typedef struct	s_point
 {
 	float			x;
