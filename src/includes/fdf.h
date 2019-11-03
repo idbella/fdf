@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 05:24:37 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/03 16:56:38 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define END 1
 # define A 0
 # define B 1
+# define X 0
+# define Y 1
+
 typedef struct	s_point
 {
 	float			x;
@@ -57,10 +60,11 @@ typedef	struct	s_params
 	int		y;
 	char	var;
 	int		maxz;
-	t_point	*tmppt0;
-	t_point	*tmppt1;
+	t_point	tmppt0;
+	t_point	tmppt1;
 	int		width;
 	int		height;
+	size_t	pts;
 	int		**screen;
 }				t_params;
 

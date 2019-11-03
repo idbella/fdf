@@ -6,7 +6,7 @@
 #    By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/06 16:23:12 by sid-bell          #+#    #+#              #
-#    Updated: 2019/11/01 06:15:55 by sid-bell         ###   ########.fr        #
+#    Updated: 2019/11/02 10:08:05 by sid-bell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,12 @@ OFILES=$(CFILES:.c=.o)
 
 CFLAGS+=$(FLAGS)
 
+CC=gcc
+
 all : $(NAME)
+
 $(NAME) : $(OFILES)
-	ar rc $(NAME) $(OFILES)
+	@ar rc $(NAME) $(OFILES)
 
 clean :
 	@rm -rf $(OFILES)

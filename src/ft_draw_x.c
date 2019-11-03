@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:40:20 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/09/19 15:40:31 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/03 16:45:21 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_draw_x(t_params *params, int x, int y)
 	color = ft_getcolor(params->plot[y][x],
 			params->plot[y][x + 1], params->maxz);
 	y *= params->zoom;
-	point0 = params->tmppt0;
-	point1 = params->tmppt1;
+	point0 = &params->tmppt0;
+	point1 = &params->tmppt1;
 	iso(point0, x * params->zoom, y, z0);
 	iso(point1, (x + 1) * params->zoom, y, z1);
 	if (!(point0->x + params->x_translate > params->width

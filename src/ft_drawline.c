@@ -6,54 +6,59 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 04:45:34 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 05:58:53 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/03 17:14:20 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-char	ft_equal(t_point *start, t_point *end)
+void	ft_swap(t_point *start, t_point *end)
 {
-	return (start->x == end->x && start->y == end->y);
-}
+	float tmp;
 
-void	ft_getstart(float *pt, t_point *start, t_point *end)
-{
-	pt[START] = start->x;
-	pt[END] = end->x;
 	if (start->x > end->x)
 	{
-		pt[START] = end->x;
-		pt[END] = start->x;
+		tmp = start->x;
+		start->x = end->x;
+		end->x = tmp;
 	}
 }
 
-void	ft__draw(t_params *params, float dx, float dy, int color)
+float	ft_incr(float dx, float dy)
 {
-	float		pt[2];
-	int			y;
-	float		ab[2];
-	float		inc;
-	t_point		*point[2];
+	float inc;
 
-	point[START] = params->tmppt0;
-	point[END] = params->tmppt1;
-	ft_getstart(pt, point[START], point[END]);
-	ab[A] = dy / dx;
-	ab[B] = point[START]->y - ab[A] * point[START]->x;
 	inc = 1;
 	if (fabs(dx) < fabs(dy))
 		inc = 1 / dy;
 	if (inc < 0.07)
 		inc = 0.07;
-	while (pt[START] < pt[END])
+	return (inc);
+}
+
+void	ft__draw(t_params *params, float dx, float dy, int color)
+{
+	int			xy[2];
+	float		ab[2];
+	float		inc;
+	t_point		*start;
+	t_point		*end;
+
+	start = &params->tmppt0;
+	end = &params->tmppt1;
+	xy[X] = start->x;
+	ft_swap(start, end);
+	ab[A] = dy / dx;
+	ab[B] = start->y - ab[A] * xy[X];
+	inc = ft_incr(dx, dy);
+	while (start->x < end->x)
 	{
 		if (dy != 0)
-			y = ab[A] * pt[START] + ab[B];
+			xy[Y] = ab[A] * start->x + ab[B];
 		else
-			y = point[START]->y;
-		ft_putpixel((int)pt[START], y, color);
-		pt[START] += inc;
+			xy[Y] = start->y;
+		ft_putpixel((int)start->x, xy[Y], color);
+		start->x += inc;
 	}
 }
 
@@ -84,13 +89,13 @@ void	ft_init_draw(t_point *start, t_point *end, int color)
 	float		dy;
 	t_params	*params;
 
-	if (ft_equal(start, end))
+	if (start->x == end->x && start->y == end->y)
 		return ;
 	dx = (end->x - start->x);
 	dy = (end->y - start->y);
 	params = ft_setter(0);
-	params->tmppt0 = start;
-	params->tmppt1 = end;
+	params->tmppt0 = *start;
+	params->tmppt1 = *end;
 	if (dx != 0)
 		ft__draw(params, dx, dy, color);
 	else

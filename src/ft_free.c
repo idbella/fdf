@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:07:29 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 04:53:43 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/03 17:16:25 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	ft_free_array(char **array)
 	free(array);
 }
 
+void	ft_release_mlx(t_params *params)
+{
+	if (params->win_ptr)
+		mlx_destroy_window(params->mlx_ptr, params->win_ptr);
+}
+
 int		ft_fatal(char *msg)
 {
 	t_params	*params;
@@ -30,9 +36,9 @@ int		ft_fatal(char *msg)
 	int			**plot;
 	int			y;
 
-	if (msg)
-		ft_printf_fd(1, "%s\n", msg);
+	ft_printf_fd(1, "%s\n", msg ? msg : "");
 	params = ft_setter(NULL);
+	ft_release_mlx(params);
 	pt = params->pthead;
 	plot = params->plot;
 	while (pt)
