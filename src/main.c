@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/03 16:45:51 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/04 11:04:42 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void		ft_init(t_params *params, char *file)
 	params->z_zoom = 0.1;
 	params->maxz = 0;
 	params->mouse_down = 0;
-	params->width = 1080;
+	params->width = 480;
 	params->projection = ISO;
-	params->height = 720;
+	params->height = 360;
 	params->pthead = NULL;
 	params->plot = NULL;
 	params->lines = 0;

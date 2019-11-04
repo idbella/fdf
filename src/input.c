@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 11:20:34 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/01 04:53:23 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/04 09:31:01 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ int		ft_mouse_press(int keycode, int x, int y)
 	float		d;
 
 	params = ft_setter(NULL);
-	if (x <= 0 || y < 0)
-	{
-		ft_draw(params);
+	if (x <= 0 || y <= 0)
 		return (0);
-	}
 	if (keycode == 1)
 	{
 		params->x = x;

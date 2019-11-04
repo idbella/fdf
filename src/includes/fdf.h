@@ -6,14 +6,14 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/03 16:56:38 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/04 10:56:52 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "../libft/libft.h"
-# include "mlx.h"
+# include "libft.h"
+# include <mlx.h>
 # include "fcntl.h"
 # define GREY 7500402
 # define RED 5316608
@@ -41,31 +41,29 @@ typedef struct	s_point
 
 typedef	struct	s_params
 {
-	int		x_max;
-	t_point	*points;
-	t_point	*pthead;
-	int		fd;
-	int		**plot;
-	int		lines;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*image;
-	float	zoom;
-	float	z_zoom;
-	int		x_translate;
-	int		y_translate;
-	int		projection;
-	char	mouse_down;
-	int		x;
-	int		y;
-	char	var;
-	int		maxz;
-	t_point	tmppt0;
-	t_point	tmppt1;
-	int		width;
-	int		height;
-	size_t	pts;
-	int		**screen;
+	int				x_max;
+	t_point			*points;
+	t_point			*pthead;
+	int				fd;
+	int				**plot;
+	int				lines;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	float			zoom;
+	float			z_zoom;
+	int				x_translate;
+	int				y_translate;
+	int				projection;
+	char			mouse_down;
+	int				x;
+	int				y;
+	char			var;
+	int				maxz;
+	t_point			tmppt0;
+	t_point			tmppt1;
+	int				width;
+	int				height;
+	int				**screen;
 }				t_params;
 
 typedef struct	s_size
