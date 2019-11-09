@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 11:04:42 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/04 11:26:07 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,6 @@ void		ft_loader(t_params *params, char *file)
 	if ((params->fd = open(file, O_RDONLY)) < 0)
 		ft_fatal("unable to open map");
 	ft_load_map(params);
-	if (params->x_max * 10 > params->width)
-	{
-		params->x_translate += 100;
-		params->zoom = 5;
-	}
-	if (params->x_max * 30 > params->width)
-	{
-		params->x_translate += 100;
-		params->zoom = 2.5;
-	}
 	ft_list_to_array(params);
 	ft_handle_input(params->win_ptr);
 	ft_draw(params);

@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 10:56:52 by sid-bell         ###   ########.fr       */
+/*   Updated: 2019/11/04 11:13:15 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_point
 
 typedef	struct	s_params
 {
+
 	int				x_max;
 	t_point			*points;
 	t_point			*pthead;
@@ -57,7 +58,6 @@ typedef	struct	s_params
 	char			mouse_down;
 	int				x;
 	int				y;
-	char			var;
 	int				maxz;
 	t_point			tmppt0;
 	t_point			tmppt1;
