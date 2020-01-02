@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:48:53 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 12:00:18 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/02 16:21:16 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	ft_load_map(t_params *params)
 			ft_fatal("Map Error1");
 		ft_getxyz(parts, params, y);
 		y++;
+		free(line);
 	}
 	if (y == 0 && lenght == 0)
 		ft_fatal("No data found");
