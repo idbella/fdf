@@ -1,0 +1,7 @@
+*.o
+*.fdf
+.gitignore
+*.dSYM
+.vscode
+fdf
+*.a
