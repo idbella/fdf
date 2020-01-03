@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 15:05:34 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 15:22:55 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void		ft_list_to_array(t_params *params)
 			point = list;
 			params->plot[y][x] = *point;
 			list = list->next;
-			//free(point);
 			x++;
 		}
 		y++;
