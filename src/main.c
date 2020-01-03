@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 11:26:07 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 15:05:34 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void		ft_list_to_array(t_params *params)
 	int		x;
 
 	list = params->pthead;
-	params->plot = (int **)malloc(sizeof(int *) * (params->lines + 1));
+	params->plot = (t_point **)malloc(sizeof(t_point *) * (params->lines + 1));
 	y = 0;
 	while (y < params->lines)
 	{
-		params->plot[y] = (int *)malloc(sizeof(int) * (params->x_max));
+		params->plot[y] = (t_point *)malloc(sizeof(t_point) * (params->x_max));
 		x = 0;
 		while (x < params->x_max)
 		{
 			point = list;
-			params->plot[y][x] = point->z;
+			params->plot[y][x] = *point;
 			list = list->next;
-			free(point);
+			//free(point);
 			x++;
 		}
 		y++;
@@ -59,9 +59,9 @@ void		ft_init(t_params *params, char *file)
 	params->z_zoom = 0.1;
 	params->maxz = 0;
 	params->mouse_down = 0;
-	params->width = 480;
+	params->width = 1280;
 	params->projection = ISO;
-	params->height = 360;
+	params->height = 720;
 	params->pthead = NULL;
 	params->plot = NULL;
 	params->lines = 0;

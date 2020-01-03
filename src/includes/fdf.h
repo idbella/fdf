@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/02 21:21:15 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/03 14:42:13 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef	struct	s_params
 	t_point			*points;
 	t_point			*pthead;
 	int				fd;
-	int				**plot;
+	t_point			**plot;
 	int				lines;
 	void			*mlx_ptr;
 	void			*win_ptr;

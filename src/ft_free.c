@@ -6,7 +6,7 @@
 /*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:07:29 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 12:00:39 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 14:44:28 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_fatal(char *msg)
 	t_params	*params;
 	t_point		*pt;
 	t_point		*tmp;
-	int			**plot;
+	t_point		**plot;
 	int			y;
 
 	msg ? ft_printf_fd(1, "%s\n", msg) : 0;
