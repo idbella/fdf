@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 14:42:13 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 18:49:42 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 # include "libft.h"
 # include <mlx.h>
 # include "fcntl.h"
-# define GREY 7500402
-# define RED 5316608
-# define GREEN 5251072
+# define GREY 16579836
+# define RED 13395558
+# define GREEN 13421670
 # include <math.h>
 # define PARALLEL -1
 # define ISO 1
@@ -30,6 +30,8 @@
 # define B 1
 # define X 0
 # define Y 1
+# define WHITE 16777215
+# define PINK 13395558
 
 typedef struct	s_point
 {
@@ -73,7 +75,7 @@ typedef struct	s_size
 	size_t	height;
 }				t_size;
 
-int				get_color(char  *x);
+int				get_color(char *x);
 void			ft_load_map(t_params *params);
 int				ft_fatal(char *msg);
 void			ft_draw_plane(t_params *params);

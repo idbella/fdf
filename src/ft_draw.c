@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 08:49:01 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 15:03:24 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 18:58:14 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,16 @@ void	ft_draw(t_params *params)
 {
 	mlx_clear_window(params->mlx_ptr, params->win_ptr);
 	ft_draw_xy(params);
+	mlx_string_put(params->mlx_ptr,
+	params->win_ptr, 30, 30, WHITE, "MENU :");
+	mlx_string_put(params->mlx_ptr,
+	params->win_ptr, 45, 50, PINK, "-> Zoom       : sroll.");
+	mlx_string_put(params->mlx_ptr,
+	params->win_ptr, 45, 65, PINK, "-> Projection : space.");
+	mlx_string_put(params->mlx_ptr,
+	params->win_ptr, 45, 80, PINK, "-> Move       : mouse.");
+	mlx_string_put(params->mlx_ptr,
+	params->win_ptr, 45, 95, PINK, "-> Altitude   : +/-.");
+	mlx_string_put(params->mlx_ptr,
+	params->win_ptr, 45, 110, PINK, "-> Exite      : ESC.");
 }
