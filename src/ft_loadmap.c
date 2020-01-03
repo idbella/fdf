@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_loadmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:48:53 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 12:00:18 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 14:25:46 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_point	*ft_new_point(int x, int y, char **array)
 	point->x = x;
 	point->y = y;
 	point->next = NULL;
+	point->color = get_color(array[x]);
 	point->z = ft_atoi(array[x]);
 	return (point);
 }

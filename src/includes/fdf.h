@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 11:13:15 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/02 21:21:15 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_point
 	float			x;
 	float			y;
 	int				z;
+	int				color;
 	struct s_point	*next;
 }				t_point;
 
@@ -72,6 +73,7 @@ typedef struct	s_size
 	size_t	height;
 }				t_size;
 
+int				get_color(char  *x);
 void			ft_load_map(t_params *params);
 int				ft_fatal(char *msg);
 void			ft_draw_plane(t_params *params);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_x.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:40:20 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/03 16:45:21 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 14:20:59 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ void	ft_draw_x(t_params *params, int x, int y)
 
 	z0 = params->plot[y][x] * params->z_zoom * params->zoom;
 	z1 = params->plot[y][x + 1] * params->z_zoom * params->zoom;
-	color = ft_getcolor(params->plot[y][x],
-			params->plot[y][x + 1], params->maxz);
+	//	ft_printf_fd(1, "color = %d\n", params->tmppt0.color);
+	if (params->tmppt0.color)
+		color = params->tmppt0.color;
+	else
+		color = ft_getcolor(params->plot[y][x],
+	 		params->plot[y + 1][x], params->maxz);
 	y *= params->zoom;
 	point0 = &params->tmppt0;
 	point1 = &params->tmppt1;
