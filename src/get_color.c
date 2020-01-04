@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 19:14:00 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/01/04 12:16:48 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/04 12:35:24 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		string_to_int(char *color)
 		binary = binary << 4 | x;
 		i++;
 	}
-	ft_strdel(color);
+	ft_strdel(&color);
 	return (binary);
 }
 
