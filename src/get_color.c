@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 19:14:00 by ktbatou           #+#    #+#             */
-/*   Updated: 2020/01/04 12:35:24 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/04 15:55:51 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		hex_lenght(char *str)
 	n = 0;
 	while (str[i])
 	{
-		if (str[i] == ',' && str[i + 1] == 0)
+		if (str[i] == ',' && str[i + 1] == '0')
 		{
 			while (str[i++])
 				n++;
@@ -75,13 +75,13 @@ char	*color_val(char *x)
 	i = 0;
 	n = 0;
 	clr = 0;
-	if (!hex_lenght(x))
+	if (hex_lenght(x))
 		clr = ft_strnew(hex_lenght(x));
 	else
 		return (NULL);
 	while (x[i])
 	{
-		if (x[i] == ',')
+		if (x[i] == ',' && x[i + 1] == '0')
 		{
 			i += 3;
 			while (x[i])

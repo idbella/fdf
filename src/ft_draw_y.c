@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_y.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:41:44 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 19:37:34 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/04 15:16:29 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	ft_draw_y(t_params *params, int x, int y)
 	t_point	*point0;
 	t_point	*point1;
 
-	z0 = params->plot[y][x].z * params->z_zoom * params->zoom;
-	z1 = params->plot[y + 1][x].z * params->z_zoom * params->zoom;
-	if (params->plot[y][x].color && !params->randm_color)
-		color = params->plot[y][x].color;
+	z0 = params->plot[y][x]->z * params->z_zoom * params->zoom;
+	z1 = params->plot[y + 1][x]->z * params->z_zoom * params->zoom;
+	if (params->plot[y][x]->color && !params->randm_color)
+		color = params->plot[y][x]->color;
 	else
-		color = ft_getcolor(params->plot[y][x].z,
-		params->plot[y + 1][x].z, params->maxz);
+		color = ft_getcolor(params->plot[y][x]->z,
+		params->plot[y + 1][x]->z, params->maxz);
 	x *= params->zoom;
 	point0 = &params->tmppt0;
 	point1 = &params->tmppt1;

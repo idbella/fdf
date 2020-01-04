@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 19:51:03 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/04 18:24:15 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,21 @@ void		ft_list_to_array(t_params *params)
 	int		x;
 
 	list = params->pthead;
-	params->plot = (t_point **)malloc(sizeof(t_point *) * (params->lines + 1));
+	params->plot = ft_memalloc(sizeof(t_point **) * (params->lines + 1));
 	y = 0;
 	while (y < params->lines)
 	{
-		params->plot[y] = (t_point *)malloc(sizeof(t_point) * (params->x_max));
+		params->plot[y] = ft_memalloc(sizeof(t_point *) * (params->x_max));
 		x = 0;
 		while (x < params->x_max)
 		{
 			point = list;
-			params->plot[y][x] = *point;
+			params->plot[y][x] = point;
 			list = list->next;
 			x++;
 		}
 		y++;
 	}
-	params->pthead = NULL;
-	params->plot[y] = NULL;
 }
 
 void		ft_init(t_params *params, char *file)

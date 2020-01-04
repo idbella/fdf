@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_loadmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:48:53 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 14:25:46 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/04 19:33:47 by sid-bell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ void	ft_load_map(t_params *params)
 		if (y == 0)
 			params->x_max = lenght;
 		else if (lenght < params->x_max)
-			ft_fatal("Map Error1");
+			ft_fatal("Map Error");
 		ft_getxyz(parts, params, y);
+		ft_strdel(&line);
 		y++;
 	}
 	if (y == 0 && lenght == 0)
