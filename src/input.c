@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 11:20:34 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 19:54:45 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/04 19:40:50 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,7 @@ int		ft_scroll(int keycode)
 	if (keycode == 49)
 		params->projection *= -1;
 	if (keycode == 8)
-	{
-		params->white = rand();
-		params->pink = rand();
-		params->yellow = rand();
-	}
+		random_color(params);
 	ft_draw(params);
 	return (0);
 }

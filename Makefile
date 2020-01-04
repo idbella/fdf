@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+         #
+#    By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/01 06:02:07 by sid-bell          #+#    #+#              #
-#    Updated: 2020/01/04 19:36:38 by sid-bell         ###   ########.fr        #
+#    Updated: 2020/01/04 19:42:40 by ktbatou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ HINC = src/includes/fdf.h
 INC= -I/usr/local/include -Isrc/includes -Isrc/libft
 
 SRC=src/ft_draw.c	src/ft_drawline.c	src/ft_loadmap.c	src/ft_free.c		src/input.c	src/iso.c\
-	src/ft_draw_y.c src/ft_draw_x.c		src/ft_color.c		src/ft_putpixel.c	src/main.c src/get_color.c
+	src/ft_draw_y.c src/ft_draw_x.c		src/ft_color.c		src/ft_putpixel.c	src/main.c src/get_color.c src/random_color.c
 
 CFLAGS = $(INC) $(FLAGS)
 

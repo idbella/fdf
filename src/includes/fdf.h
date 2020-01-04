@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/04 15:16:03 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/04 19:45:29 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef	struct	s_params
 	int				width;
 	int				height;
 	int				**screen;
-	int 			randm_color;
+	int				randm_color;
 	int				pink;
 	int				white;
 	int				yellow;
@@ -79,6 +79,7 @@ typedef struct	s_size
 	size_t	height;
 }				t_size;
 
+void			random_color(t_params *params);
 int				get_color(char *x);
 void			ft_load_map(t_params *params);
 int				ft_fatal(char *msg);
