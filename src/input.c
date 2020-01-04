@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 11:20:34 by sid-bell          #+#    #+#             */
-/*   Updated: 2019/11/04 09:31:01 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 19:54:45 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,12 @@ int		ft_scroll(int keycode)
 		params->z_zoom -= 0.1;
 	if (keycode == 49)
 		params->projection *= -1;
+	if (keycode == 8)
+	{
+		params->white = rand();
+		params->pink = rand();
+		params->yellow = rand();
+	}
 	ft_draw(params);
 	return (0);
 }

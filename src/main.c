@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 14:53:13 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 16:35:23 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/03 19:51:03 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void		ft_init(t_params *params, char *file)
 	params->pthead = NULL;
 	params->plot = NULL;
 	params->lines = 0;
+	params->randm_color = 0;
+	params->white = 16579836;
+	params->pink = 13395558;
+	params->yellow = 13421670;
 	if (!(params->mlx_ptr = mlx_init()))
 		ft_fatal("unable to initialize mlx\n");
 	if (!(params->win_ptr = mlx_new_window(params->mlx_ptr, params->width,

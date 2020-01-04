@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 04:47:32 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 18:49:42 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/03 19:51:06 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ typedef	struct	s_params
 	int				width;
 	int				height;
 	int				**screen;
+	int 			randm_color;
+	int				pink;
+	int				white;
+	int				yellow;
 }				t_params;
 
 typedef struct	s_size

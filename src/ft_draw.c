@@ -6,7 +6,7 @@
 /*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 08:49:01 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 18:58:14 by ktbatou          ###   ########.fr       */
+/*   Updated: 2020/01/03 19:58:15 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,6 @@ void	ft_draw(t_params *params)
 	params->win_ptr, 45, 95, PINK, "-> Altitude   : +/-.");
 	mlx_string_put(params->mlx_ptr,
 	params->win_ptr, 45, 110, PINK, "-> Exite      : ESC.");
+	mlx_string_put(params->mlx_ptr,
+	params->win_ptr, 45, 125, PINK, "-> Color      : c.");
 }

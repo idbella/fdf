@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_y.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sid-bell <sid-bell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktbatou <ktbatou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:41:44 by sid-bell          #+#    #+#             */
-/*   Updated: 2020/01/03 15:02:06 by sid-bell         ###   ########.fr       */
+/*   Updated: 2020/01/03 19:37:34 by ktbatou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_draw_y(t_params *params, int x, int y)
 
 	z0 = params->plot[y][x].z * params->z_zoom * params->zoom;
 	z1 = params->plot[y + 1][x].z * params->z_zoom * params->zoom;
-	if (params->plot[y][x].color)
+	if (params->plot[y][x].color && !params->randm_color)
 		color = params->plot[y][x].color;
 	else
 		color = ft_getcolor(params->plot[y][x].z,
